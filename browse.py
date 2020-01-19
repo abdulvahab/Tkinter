@@ -10,6 +10,20 @@ import os
 import re
 from geopandas import GeoDataFrame, points_from_xy
 
+import argparse
+parser = argparse.ArgumentParser()
+#-i specify path for csv files's folder -o specify path for shp files's folder 
+parser.add_argument("-i", "--input", dest = "input_csv_folder", default = "", help="path for csv files's folder")
+parser.add_argument("-o", "--output", dest = "output_shp_folder", default = "", help="path for shp files's folder")
+
+
+args = parser.parse_args()
+
+print( "CSV folder {} shp folder  {}".format(
+        args.input_csv_folder,
+        args.output_shp_folder,
+        ))
+
 def csv_to_shp(csv_file_path, shp_file_path):
 
     df = pd.read_csv(csv_file_path, sep=' ', header=None)
